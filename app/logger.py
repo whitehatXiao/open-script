@@ -4,12 +4,13 @@ from pathlib import Path
 from contextvars import ContextVar
 from loguru import logger
 from fastapi import Request
+from type.constants import Constants
 
 class UnifiedLogger:
     """集成Uvicorn日志的Loguru配置器"""
 
     def __init__(self):
-        self.log_dir = Path(__file__).parent.parent / "logs"
+        self.log_dir = Constants.LOG_DIR
         self.request_id = ContextVar("request_id", default="SYSTEM")
         self._init_config()
 

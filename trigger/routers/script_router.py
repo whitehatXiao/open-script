@@ -1,18 +1,19 @@
 # api/routers/script_router.py
 from fastapi import APIRouter, UploadFile, File
-from core.plugin_loader import PluginLoader, Path
-from core.logger import log
+from app.plugin_loader import PluginLoader, Path
+from app.logger import log
 import shutil
+from type.constants import Constants
 
 router = APIRouter(
-    prefix="/scripts",
+    # prefix="/scripts",
     tags=["脚本管理"],
     responses={404: {"description": "Not found"}}
 )
 
 plugin_loader = PluginLoader()
 
-@router.post("/upload",
+@router.post("/scripts/upload",
              summary="上传插件脚本",
              responses={
                  200: {"description": "插件加载成功"},
@@ -22,12 +23,12 @@ async def upload_script(file: UploadFile = File(...)):
     """处理脚本上传全流程"""
     try:
         # 保存到 upload/scripts
-        script_path = Path("upload/scripts") / file.filename
+        script_path = Constants.SCRIPTS_DIR / file.filename
         with open(script_path, "wb") as buffer:
             buffer.write(await file.read())
 
         # 复制到 upload/plugins
-        plugin_path = Path("upload/plugins") / file.filename
+        plugin_path = Constants.PLUGIN_DIR / file.filename
         shutil.copy(script_path, plugin_path)
 
         success = plugin_loader.load_plugin(script_path.stem)
@@ -36,7 +37,7 @@ async def upload_script(file: UploadFile = File(...)):
         log.error(f"上传失败: {str(e)}")
         raise
 
-@router.post("/execute/{script_name}",
+@router.post("/scripts/execute/{script_name}",
              summary="执行指定脚本",
              responses={
                  404: {"description": "脚本未找到"},

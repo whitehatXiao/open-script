@@ -1,10 +1,11 @@
 import importlib.util
 from pathlib import Path
+from type.constants import Constants
 
 # 插件加载器
 class PluginLoader:
-    def __init__(self, plugin_dir="plugins"):
-        self.plugin_dir = Path(plugin_dir)
+    def __init__(self, plugin_dir=Constants.PLUGIN_DIR):
+        self.plugin_dir = plugin_dir
         self.modules = {}
 
     def load_plugin(self, script_name: str) -> bool:
