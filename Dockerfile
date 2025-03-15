@@ -33,6 +33,7 @@ COPY . .
 
 # 配置容器入口
 USER root
+# 端口声明
 EXPOSE 8000
 
 # 调整后（直接运行main.py）
