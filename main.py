@@ -25,10 +25,6 @@ async def log_middleware(request: Request, call_next):
         raise
 
 
-def test():
-    log.info(f"Constants.PROJECT_ROOT: {Constants.PROJECT_ROOT}")
-    log.info(f"Constants.PLUGIN_DIR: {Constants.PLUGIN_DIR}")
-
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("main:app", reload=True, port=8000)
