@@ -19,6 +19,7 @@ class Constants(metaclass=ConstantsMeta):
     SCRIPTS_DIR: Final[Path] = PROJECT_ROOT / "resources/scripts"
     RESOURCE_DIR: Final[Path] = PROJECT_ROOT / "resources"
     RESULT_DIR: Final[Path] = PROJECT_ROOT / "resources/results"
+    DEVOPS_DIR: Final[Path] = PROJECT_ROOT / "devops"
 
     # 业务常量
     MAX_CONCURRENT_TASKS: Final[int] = 10

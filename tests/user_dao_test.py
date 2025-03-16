@@ -7,8 +7,8 @@ from app.logger import log
 
 class TestUserCRUD(unittest.TestCase):
     def setUp(self):
-        self.engine = engine
-        Base.metadata.create_all(self.engine)
+        # self.engine = engine
+        # Base.metadata.create_all(self.engine)
         self.session = get_session()
 
     def tearDown(self):
