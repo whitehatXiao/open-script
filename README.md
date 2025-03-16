@@ -5,7 +5,6 @@
 # uvicorn main:app --reload 
 # uvicorn main:app --reload --log-level debug
 
-
 # 单元测试用例
 ## 接口测试
 ### 本地测试
@@ -24,7 +23,6 @@ curl.exe -X POST "http://116.205.243.195:9999/scripts/execute/demo_plugin03"
 curl.exe -X POST -F "file=@demo_plugin01.py" http://116.205.243.195:9999/scripts/upload
 curl.exe -X POST -F "file=@demo_plugin02.py" http://116.205.243.195:9999/scripts/upload
 curl.exe -X POST -F "file=@demo_plugin03.py" http://116.205.243.195:9999/scripts/upload
-
 
 # 脚本开发标准
 1、 用 main 函数作为入口，执行脚本
